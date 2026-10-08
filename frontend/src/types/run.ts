@@ -9,7 +9,7 @@ export interface Run {
   id: string;
   /** YYYY-MM-DD. */
   date: string;
-  /** Dollars available for this distribution. */
+  /** Cents available for this distribution. */
   amount: number;
   payouts: Payout[];
   /**
@@ -17,6 +17,6 @@ export interface Run {
    * was stored; those still infer status from payouts alone.
    */
   shares?: HurdleShare[];
-  /** Dollars left after the last hurdle. */
+  /** Cents left after the last hurdle. */
   leftover: number;
 }

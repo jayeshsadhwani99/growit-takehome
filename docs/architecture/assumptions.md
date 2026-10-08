@@ -1,11 +1,12 @@
 # Assumptions
 
-## Money is a decimal dollar amount
+## Money is integer cents
 
-The assessment types use `number`, and the sample distribution is $6,000, so
-amounts are dollars rather than integer cents. `Intl.NumberFormat` rounds the
-display to cents. Float dust is acceptable because the sample only requires
-accuracy within $1. Integer cents would be the production choice.
+Investor contributions, run amounts, payouts, owed, paid, and leftover are
+whole cents. The forms take dollars and convert with `dollarsToCents` (`$10.10`
+is `1010`). `formatMoney` is the only place that divides by 100. Interest is
+rounded half-up to the cent once per owed amount, and a short hurdle hands
+leftover pennies to the largest fractional shares so the payouts add up.
 
 ## Dates are calendar days
 

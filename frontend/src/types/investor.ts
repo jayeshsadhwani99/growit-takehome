@@ -2,7 +2,7 @@
 export interface Investor {
   id: string;
   name: string;
-  /** Dollars contributed. */
+  /** Cents contributed. The form converts dollars on the way in. */
   amount: number;
   /** YYYY-MM-DD. Preferred return starts accruing on this day. */
   date: string;

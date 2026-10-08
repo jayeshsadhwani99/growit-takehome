@@ -1,6 +1,8 @@
 # State
 
-One Redux store, persisted to `localStorage` under `persist:growit`.
+One Redux store, persisted to `localStorage` under `persist:growit-cents`.
+Money in that document is integer cents. An older `persist:growit` save stored
+dollars and is left unread.
 
 ```ts
 investors: Investor[]

@@ -2,7 +2,7 @@ import { type FormEvent, useState } from "react";
 import { Button, DateField, FormField, Input } from "@/components";
 import { investorAdded } from "@/store/features/investors";
 import { useAppDispatch } from "@/store/hooks";
-import { createId, validateInvestorForm, type InvestorFormErrors } from "@/utils";
+import { createId, dollarsToCents, validateInvestorForm, type InvestorFormErrors } from "@/utils";
 
 export function InvestorForm({ onClose }: { onClose: () => void }) {
   const dispatch = useAppDispatch();
@@ -15,8 +15,9 @@ export function InvestorForm({ onClose }: { onClose: () => void }) {
     event.preventDefault();
     const next = validateInvestorForm({ name, amount, date });
     setErrors(next);
-    if (Object.keys(next).length > 0) return;
-    dispatch(investorAdded({ id: createId(), name: name.trim(), amount: Number(amount), date }));
+    const cents = dollarsToCents(amount);
+    if (Object.keys(next).length > 0 || cents === null) return;
+    dispatch(investorAdded({ id: createId(), name: name.trim(), amount: cents, date }));
     onClose();
   }
 

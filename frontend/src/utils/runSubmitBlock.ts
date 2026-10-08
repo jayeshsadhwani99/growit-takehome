@@ -1,3 +1,5 @@
+import { dollarsToCents } from "./dollarsToCents";
+
 interface RunSubmitInput {
   investorCount: number;
   hurdleCount: number;
@@ -8,9 +10,7 @@ interface RunSubmitInput {
 export function runSubmitBlock(input: RunSubmitInput): string | null {
   if (input.investorCount === 0) return "Add at least one investor first.";
   if (input.hurdleCount === 0) return "Add at least one hurdle first.";
-  const amount = Number(input.amount);
-  if (input.amount.trim() === "" || !Number.isFinite(amount) || amount <= 0) {
-    return "Enter an amount greater than 0.";
-  }
+  const cents = dollarsToCents(input.amount);
+  if (cents === null || cents <= 0) return "Enter an amount greater than 0.";
   return null;
 }

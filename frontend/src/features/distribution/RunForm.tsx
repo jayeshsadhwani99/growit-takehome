@@ -5,7 +5,7 @@ import { selectHurdles } from "@/store/features/hurdles";
 import { selectInvestors } from "@/store/features/investors";
 import { runAdded, selectLatestRunDate, selectRuns } from "@/store/features/runs";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
-import { dateToIso, runDateError, runErrorMessage, runSubmitBlock } from "@/utils";
+import { dateToIso, dollarsToCents, runDateError, runErrorMessage, runSubmitBlock } from "@/utils";
 
 export function RunForm({ onClose }: { onClose: () => void }) {
   const dispatch = useAppDispatch();
@@ -28,9 +28,10 @@ export function RunForm({ onClose }: { onClose: () => void }) {
     const nextDateError = runDateError(date, latest);
     setDateError(nextDateError);
     setEngineError(null);
-    if (nextDateError || block) return;
+    const cents = dollarsToCents(amount);
+    if (nextDateError || block || cents === null) return;
     try {
-      dispatch(runAdded(runDistribution(investors, hurdles, runs, date, Number(amount))));
+      dispatch(runAdded(runDistribution(investors, hurdles, runs, date, cents)));
       onClose();
     } catch (error) {
       setEngineError(runErrorMessage(error));

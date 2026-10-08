@@ -18,4 +18,8 @@ describe("yearFraction", () => {
   it("rejects a date that is not YYYY-MM-DD", () => {
     expect(() => yearFraction("01-01-2025", "2025-02-01")).toThrow(/YYYY-MM-DD/);
   });
+
+  it("rejects a calendar day that does not exist", () => {
+    expect(() => yearFraction("2025-02-29", "2025-03-01")).toThrow(/YYYY-MM-DD/);
+  });
 });

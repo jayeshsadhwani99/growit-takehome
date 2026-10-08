@@ -1,2 +1,2 @@
-/** localStorage key for the whole deal. One deal, one saved document. */
-export const PERSIST_KEY = "growit";
+/** localStorage key for the whole deal. Bumped when stored money moved from dollars to cents. */
+export const PERSIST_KEY = "growit-cents";

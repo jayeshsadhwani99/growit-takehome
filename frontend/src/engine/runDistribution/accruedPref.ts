@@ -1,12 +1,17 @@
-import { yearFraction } from "../yearFraction";
+import { daysBetween } from "../daysBetween";
+import { roundDiv } from "../roundDiv";
 
 export interface CapitalReturn {
   date: string;
   amount: number;
 }
 
+const RATE_SCALE = 100n;
+const CENT_SCALE = 100n;
+const YEAR_DAYS = 365n;
+
 /**
- * Simple interest on the capital that was actually out during each stretch.
+ * Simple interest, in cents, on the capital that was actually out during each stretch.
  * A later return does not rewrite the interest already earned on a larger balance.
  */
 export function accruedPref(
@@ -17,19 +22,22 @@ export function accruedPref(
   asOf: string,
 ): number {
   if (asOf < investedOn) return 0;
+  const rateUnits = BigInt(Math.round(rate * 100));
   const events = returns
     .filter((item) => item.date >= investedOn && item.date < asOf)
     .sort((a, b) => a.date.localeCompare(b.date));
   let balance = Math.max(0, contributed);
   let cursor = investedOn;
-  let interest = 0;
+  let numerator = 0n;
   for (const event of events) {
     if (event.date > cursor && balance > 0) {
-      interest += balance * (rate / 100) * yearFraction(cursor, event.date);
+      numerator += BigInt(balance) * rateUnits * BigInt(daysBetween(cursor, event.date));
       cursor = event.date;
     }
     balance = Math.max(0, balance - event.amount);
   }
-  if (asOf > cursor && balance > 0) interest += balance * (rate / 100) * yearFraction(cursor, asOf);
-  return interest;
+  if (asOf > cursor && balance > 0) {
+    numerator += BigInt(balance) * rateUnits * BigInt(daysBetween(cursor, asOf));
+  }
+  return roundDiv(numerator, RATE_SCALE * CENT_SCALE * YEAR_DAYS);
 }

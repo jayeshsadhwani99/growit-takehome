@@ -7,7 +7,8 @@ There is one waterfall, shared by every investor.
 ## Hurdles
 
 - **Preferred return.** Simple interest, at an annual rate the user can edit,
-  on capital that has not yet been returned. New cards start at 8%.
+  on capital outstanding during each stretch up to the distribution date.
+  New cards start at 8%.
 - **Return of capital.** Pay back each investor's original contribution.
 - The same type can appear more than once. A second preferred return is a
   separate hurdle with its own rate.

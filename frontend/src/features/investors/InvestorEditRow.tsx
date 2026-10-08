@@ -3,7 +3,7 @@ import { Button, DateField, Input } from "@/components";
 import { saveInvestor } from "@/store/features/investors";
 import { useAppDispatch } from "@/store/hooks";
 import type { Investor } from "@/types";
-import { formatShare, validateInvestorForm } from "@/utils";
+import { centsToDollarInput, dollarsToCents, formatShare, validateInvestorForm } from "@/utils";
 
 interface InvestorEditRowProps {
   investor: Investor;
@@ -14,7 +14,7 @@ interface InvestorEditRowProps {
 export function InvestorEditRow({ investor, total, onDone }: InvestorEditRowProps) {
   const dispatch = useAppDispatch();
   const [name, setName] = useState(investor.name);
-  const [amount, setAmount] = useState(String(investor.amount));
+  const [amount, setAmount] = useState(centsToDollarInput(investor.amount));
   const [date, setDate] = useState(investor.date);
   const [message, setMessage] = useState<string | null>(null);
 
@@ -25,7 +25,9 @@ export function InvestorEditRow({ investor, total, onDone }: InvestorEditRowProp
       setMessage(first);
       return;
     }
-    dispatch(saveInvestor({ ...investor, name: name.trim(), amount: Number(amount), date }));
+    const cents = dollarsToCents(amount);
+    if (cents === null) return;
+    dispatch(saveInvestor({ ...investor, name: name.trim(), amount: cents, date }));
     onDone();
   }
 

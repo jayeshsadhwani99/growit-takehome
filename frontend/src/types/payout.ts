@@ -2,6 +2,6 @@
 export interface Payout {
   investorId: string;
   hurdleId: string;
-  /** Dollars paid. */
+  /** Cents paid. */
   amount: number;
 }

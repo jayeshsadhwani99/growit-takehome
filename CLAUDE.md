@@ -13,7 +13,7 @@ engine is a stub.
 - Tech lives in `frontend/`: Vite, React, TypeScript, Tailwind, Redux Toolkit,
   redux-persist, React Router. UI primitives follow the shadcn pattern
   (native controls, Tailwind, `components/ui`).
-- Money is a plain dollar `number`. Dates are `YYYY-MM-DD` strings.
+- Money is an integer number of cents. Dates are `YYYY-MM-DD` strings.
 - A run stores its payouts. Nothing recomputes a past run.
 
 ## Non-negotiable rules

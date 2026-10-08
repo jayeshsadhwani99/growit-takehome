@@ -1,7 +1,7 @@
 import type { Hurdle } from "@/types";
 import type { InvestorAccount } from "./investorAccount";
 
-/** A return of capital paid now shrinks the base for every later hurdle in this run. */
+/** Later return-of-capital hurdles see a smaller balance. Preferred return keeps interest already earned up to today. */
 export function recordPayout(accounts: InvestorAccount[], hurdle: Hurdle, investorId: string, amount: number): void {
   const account = accounts.find((item) => item.investorId === investorId);
   if (!account) return;
