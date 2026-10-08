@@ -63,6 +63,13 @@ describe("runDistribution", () => {
     expect(paid(run, "bob")).toBeCloseTo(30_000, 5);
   });
 
+  it("accrues another year of preferred return on capital still out", () => {
+    const leave = 4_966.68;
+    const first = runDistribution([alice], [pref, roc], [], "2026-01-01", 8_000 + (100_000 - leave));
+    const second = runDistribution([alice], [pref, roc], [first], "2027-01-01", 1_000_000);
+    expect(paid(second, "alice", "pref")).toBeCloseTo(leave * 0.08, 2);
+  });
+
   it("lets a later investor catch up from their own date", () => {
     const first = runDistribution([alice], [pref, roc], [], "2025-07-01", 100_000);
     const second = runDistribution([alice, bob], [pref, roc], [first], "2026-01-01", 200_000);

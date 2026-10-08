@@ -11,13 +11,17 @@ export function buildAccounts(investors: Investor[], hurdles: Hurdle[], previous
       contributed: investor.amount,
       investedOn: investor.date,
       capitalReturned: 0,
+      capitalEvents: [],
       paidByHurdle: {},
     };
     for (const run of previousRuns) {
       for (const payout of run.payouts) {
         if (payout.investorId !== investor.id) continue;
         account.paidByHurdle[payout.hurdleId] = (account.paidByHurdle[payout.hurdleId] ?? 0) + payout.amount;
-        if (rocIds.has(payout.hurdleId)) account.capitalReturned += payout.amount;
+        if (rocIds.has(payout.hurdleId)) {
+          account.capitalReturned += payout.amount;
+          account.capitalEvents.push({ date: run.date, amount: payout.amount });
+        }
       }
     }
     return account;

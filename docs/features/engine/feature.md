@@ -14,18 +14,20 @@ Output: one `Run`, with an id assigned here. The steps are:
 
 1. For this date, compute what each investor is still owed on each hurdle,
    then subtract what previous runs already paid them on that hurdle.
-   Preferred return is simple interest on unreturned capital. Return of
-   capital is their investment minus capital already returned.
+   Preferred return accrues on the capital that was outstanding during each
+   stretch between returns of capital. A later year still earns the rate on
+   whatever is still out. Return of capital is their investment minus capital
+   already returned.
 2. Walk hurdles in order. Split this hurdle's cash in proportion to what each
    investor is still owed. An investor owed nothing gets nothing.
 3. Cash left after a hurdle is the input to the next one. Cash left after the
    last hurdle is `leftover`. Each investor's owed and paid amount is stored on
    the run as `shares`, including hurdles the cash never reached.
 
-Unreturned capital changes when return of capital is paid, including in an
-earlier hurdle of this same run. Interest for a later preferred return uses
-the capital still outstanding, and a previous run's payments have to be
-subtracted or the same interest would be paid twice.
+A return of capital earlier in this same run lowers the base of every later
+hurdle for the whole holding period. Across runs, interest already earned on
+a larger balance is kept. Payments on a hurdle are subtracted so that stretch
+is not paid twice.
 
 An investor is owed from their own investment date. If this run is dated
 before that day, they are owed nothing yet. Someone added after earlier runs

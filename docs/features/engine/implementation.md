@@ -7,6 +7,7 @@ frontend/src/engine/runDistribution/index.ts         the walk
 frontend/src/engine/runDistribution/investorAccount.ts
 frontend/src/engine/runDistribution/buildAccounts.ts
 frontend/src/engine/runDistribution/owedOnHurdle.ts
+frontend/src/engine/runDistribution/accruedPref.ts
 frontend/src/engine/runDistribution/splitHurdle.ts
 frontend/src/engine/runDistribution/recordPayout.ts
 frontend/src/engine/runDistribution/runDistribution.test.ts
