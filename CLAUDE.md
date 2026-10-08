@@ -23,10 +23,10 @@ engine is a stub.
    the folder; import siblings by file so barrels do not cycle.
 2. **Comment the why.** Business rules and tradeoffs only, not a narration of
    the code.
-3. **Do not invent distribution math.** `yearFraction` is implemented.
-   `runDistribution` throws `"not implemented"` until someone asks to build it.
-   The skipped test in `frontend/src/engine/runDistribution.test.ts` is the
-   contract.
+3. **Do not invent distribution math.** Preferred return is simple interest
+   on unreturned capital. Return of capital is contribution still out. Cash
+   walks the hurdles in order. The test in
+   `frontend/src/engine/runDistribution/runDistribution.test.ts` is the contract.
 4. **Preferred-return `rate` is a percent.** `8` means 8% a year, not `0.08`.
 5. **Runs are append-only.** Reset is the only way to delete them, and it is
    what unlocks hurdle edits and paid investors.

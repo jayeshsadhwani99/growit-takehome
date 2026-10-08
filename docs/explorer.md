@@ -26,7 +26,7 @@ Each feature has `feature.md` (why) and `implementation.md` (where the code is).
 | --- | --- |
 | [`features/investors/`](./features/investors) | UI done |
 | [`features/waterfall/`](./features/waterfall) | UI done |
-| [`features/distribution/`](./features/distribution) | UI done, engine stubbed |
+| [`features/distribution/`](./features/distribution) | UI done, engine fills hurdles in order |
 | [`features/theme/`](./features/theme) | System, light, or dark, stored with the deal |
 | [`features/motion/`](./features/motion) | Page, dialog, and theme motion |
-| [`features/engine/`](./features/engine) | `yearFraction` done, `runDistribution` not started |
+| [`features/engine/`](./features/engine) | `yearFraction` and `runDistribution` done |

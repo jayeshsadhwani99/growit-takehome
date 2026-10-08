@@ -1,8 +1,8 @@
 # GrowIt distributions
 
 A small investor-distribution app: a cap table, one waterfall, and a history of
-distribution runs. Built for the GrowIt take-home. The UI is complete. The
-distribution engine is stubbed on purpose.
+distribution runs. Built for the GrowIt take-home. The screens and the
+distribution engine are both in place.
 
 `CLAUDE.md` is the entry point for an AI agent. `docs/explorer.md` is the map
 of the rest of the docs.

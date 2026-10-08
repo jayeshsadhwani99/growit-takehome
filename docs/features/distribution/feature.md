@@ -15,9 +15,8 @@ and never recomputed.
   investors, or there are no hurdles. The form says which of those is wrong.
 - A date before the latest saved run is rejected under the date field. The
   same day is allowed. The button stays enabled so that error can appear.
-- The click calls `runDistribution`. Today that throws, and the form shows
-  "The distribution engine is not implemented yet." When it returns a `Run`,
-  that object is stored as-is and selected.
+- The click calls `runDistribution`. The returned `Run` is stored as-is and
+  selected. A thrown error stays in the dialog.
 
 ## Results
 

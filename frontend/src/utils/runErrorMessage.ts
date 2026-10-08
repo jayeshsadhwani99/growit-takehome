@@ -1,4 +1,4 @@
-/** The stub throws "not implemented"; show that as a sentence under the form. */
+/** A thrown run stays in the dialog. The message is the sentence under the form. */
 export function runErrorMessage(error: unknown): string {
   if (error instanceof Error && error.message === "not implemented") {
     return "The distribution engine is not implemented yet.";

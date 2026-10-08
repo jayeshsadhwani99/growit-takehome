@@ -11,9 +11,7 @@ This is the only day-count helper. Preferred return uses it.
 ## `runDistribution`
 
 Inputs: investors, hurdles in order, previous runs, the new date, the cash.
-Output: one `Run`. The body throws `"not implemented"`.
-
-When it is built, the steps are:
+Output: one `Run`, with an id assigned here. The steps are:
 
 1. For this date, compute what each investor is still owed on each hurdle,
    then subtract what previous runs already paid them on that hurdle.
