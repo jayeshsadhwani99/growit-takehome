@@ -21,7 +21,7 @@ and never recomputed.
 
 ## Results
 
-- History lists runs, newest first. Click one to view it.
+- History lists runs, newest first. Click one to view it. The date stays on one line. A very long amount ellipsizes.
 - Each hurdle is an accordion, closed until opened. The header shows paid versus owed, a progress
   bar, and a chip: Filled, Partly filled, or Not reached. Opening it lists
   each investor on that hurdle, with their own paid-versus-owed bar.

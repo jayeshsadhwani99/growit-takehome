@@ -35,7 +35,7 @@ export function DistributionPage() {
           action={<Button onClick={() => setRunning(true)}>Run distribution</Button>}
         />
       ) : (
-        <div className="grid gap-3 lg:grid-cols-[14rem_minmax(0,1fr)]">
+        <div className="grid gap-3 lg:grid-cols-[17rem_minmax(0,1fr)]">
           <RunHistory runs={runs} selectedId={selected?.id ?? null} />
           {selected ? (
             <RunResults

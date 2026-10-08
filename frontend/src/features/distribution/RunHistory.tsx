@@ -2,7 +2,7 @@ import { Money } from "@/components";
 import { runSelected } from "@/store/features/runs";
 import { useAppDispatch } from "@/store/hooks";
 import type { Run } from "@/types";
-import { cn, formatDate } from "@/utils";
+import { cn, formatDate, formatMoney } from "@/utils";
 
 export function RunHistory({ runs, selectedId }: { runs: Run[]; selectedId: string | null }) {
   const dispatch = useAppDispatch();
@@ -21,12 +21,14 @@ export function RunHistory({ runs, selectedId }: { runs: Run[]; selectedId: stri
                 type="button"
                 onClick={() => dispatch(runSelected(run.id))}
                 className={cn(
-                  "flex h-9 w-full cursor-pointer items-center justify-between gap-2 rounded-md px-2 text-left text-sm",
+                  "flex h-9 w-full min-w-0 cursor-pointer items-center justify-between gap-2 rounded-md px-2 text-left text-sm",
                   run.id === selectedId ? "bg-accent-soft text-accent" : "hover:bg-wash",
                 )}
               >
-                <span>{formatDate(run.date)}</span>
-                <Money value={run.amount} />
+                <span className="shrink-0 whitespace-nowrap">{formatDate(run.date)}</span>
+                <span className="min-w-0 truncate" title={formatMoney(run.amount)}>
+                  <Money value={run.amount} />
+                </span>
               </button>
             </li>
           ))}
