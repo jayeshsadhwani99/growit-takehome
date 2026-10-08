@@ -89,11 +89,12 @@ input[type="number"] {
   background: var(--color-accent);
   color: white;
 }
-
-.growit-calendar .react-datepicker__day--today {
-  font-weight: 600;
+.growit-calendar .react-datepicker__day--disabled,
+.growit-calendar .react-datepicker__day--disabled:hover {
+  background: transparent;
+  color: var(--color-muted);
+  cursor: not-allowed;
 }
-
 .growit-calendar .react-datepicker__day:hover {
   background: var(--color-accent-soft);
 }

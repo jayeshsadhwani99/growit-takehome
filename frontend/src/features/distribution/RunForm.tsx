@@ -5,7 +5,7 @@ import { selectHurdles } from "@/store/features/hurdles";
 import { selectInvestors } from "@/store/features/investors";
 import { runAdded, selectLatestRunDate, selectRuns } from "@/store/features/runs";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
-import { runDateError, runErrorMessage, runSubmitBlock } from "@/utils";
+import { dateToIso, runDateError, runErrorMessage, runSubmitBlock } from "@/utils";
 
 export function RunForm({ onClose }: { onClose: () => void }) {
   const dispatch = useAppDispatch();
@@ -13,7 +13,7 @@ export function RunForm({ onClose }: { onClose: () => void }) {
   const hurdles = useAppSelector(selectHurdles);
   const runs = useAppSelector(selectRuns);
   const latest = useAppSelector(selectLatestRunDate);
-  const [date, setDate] = useState("");
+  const [date, setDate] = useState(latest ?? dateToIso(new Date()));
   const [amount, setAmount] = useState("");
   const [dateError, setDateError] = useState<string | null>(null);
   const [engineError, setEngineError] = useState<string | null>(null);
@@ -43,6 +43,7 @@ export function RunForm({ onClose }: { onClose: () => void }) {
         <DateField
           id="run-date"
           value={date}
+          min={latest ?? undefined}
           onChange={(next) => {
             setDate(next);
             setDateError(null);

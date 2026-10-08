@@ -13,8 +13,9 @@ and never recomputed.
   the payouts are visible. An error leaves the dialog open.
 - The button is disabled when the amount is not greater than 0, there are no
   investors, or there are no hurdles. The form says which of those is wrong.
-- A date before the latest saved run is rejected under the date field. The
-  same day is allowed. The button stays enabled so that error can appear.
+- The date starts on the latest saved run, or today when there are no runs.
+  Earlier days are grayed out and cannot be picked. The same day is allowed.
+  A date before the latest run is still rejected under the field.
 - The click calls `runDistribution`. The returned `Run` is stored as-is and
   selected. A thrown error stays in the dialog.
 

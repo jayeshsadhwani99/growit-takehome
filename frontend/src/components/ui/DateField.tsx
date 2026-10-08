@@ -9,13 +9,15 @@ interface DateFieldProps {
   id?: string;
   value: string;
   onChange: (value: string) => void;
+  /** Earliest YYYY-MM-DD that can be picked. That day stays available. */
+  min?: string;
   disabled?: boolean;
   invalid?: boolean;
   describedBy?: string;
 }
 
 /** Closed until the field is clicked. The stored value stays YYYY-MM-DD. */
-export function DateField({ id, value, onChange, disabled, invalid, describedBy }: DateFieldProps) {
+export function DateField({ id, value, onChange, min, disabled, invalid, describedBy }: DateFieldProps) {
   const [open, setOpen] = useState(false);
   const selected = isoToDate(value);
 
@@ -37,6 +39,7 @@ export function DateField({ id, value, onChange, disabled, invalid, describedBy 
       <PopoverContent className="w-auto p-1">
         <DateCalendar
           selected={selected}
+          minDate={min ? isoToDate(min) : null}
           onSelect={(date) => {
             if (date) onChange(dateToIso(date));
             setOpen(false);

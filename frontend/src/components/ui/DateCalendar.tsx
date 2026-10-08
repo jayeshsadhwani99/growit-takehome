@@ -4,13 +4,15 @@ import { DatePickerHeader } from "./DatePickerHeader";
 
 interface DateCalendarProps {
   selected: Date | null;
+  minDate?: Date | null;
   onSelect: (date: Date | null) => void;
 }
 
-export function DateCalendar({ selected, onSelect }: DateCalendarProps) {
+export function DateCalendar({ selected, minDate, onSelect }: DateCalendarProps) {
   return (
     <DatePicker
       selected={selected}
+      minDate={minDate ?? undefined}
       onChange={onSelect}
       inline
       calendarClassName="growit-calendar"

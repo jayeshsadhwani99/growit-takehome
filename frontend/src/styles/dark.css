@@ -19,7 +19,10 @@
   color: var(--color-ink);
 }
 
-.dark .growit-calendar .react-datepicker__day--outside-month {
+.dark .growit-calendar .react-datepicker__day--outside-month,
+.dark .growit-calendar .react-datepicker__day--disabled,
+.dark .growit-calendar .react-datepicker__day--disabled:hover {
+  background: transparent;
   color: var(--color-muted);
 }
 
