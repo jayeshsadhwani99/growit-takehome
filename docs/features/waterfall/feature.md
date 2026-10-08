@@ -11,8 +11,8 @@ There is one waterfall, shared by every investor.
 - **Return of capital.** Pay back each investor's original contribution.
 - The same type can appear more than once. A second preferred return is a
   separate hurdle with its own rate.
-- Order is the card order. Up and Down swap with the neighbor. The first card
-  cannot move up, and the last cannot move down.
+- Order is the card order. Drag a card by the handle on the left, or use the
+  up and down icons. The first card cannot move up, and the last cannot move down.
 - Between cards, a short arrow says overflow goes to the next hurdle.
 - The list always ends in a dashed "Undistributed cash" box. Money still left
   after the last hurdle is not forced into a split.
@@ -21,4 +21,5 @@ There is one waterfall, shared by every investor.
 
 Once any run exists, the waterfall is frozen: add, delete, reorder, and the
 rate field. A saved run's payouts point at these hurdle ids. Changing the
-list would make that history unreadable. Reset runs unlocks it.
+list would make that history unreadable. Reset runs, on the Run distribution
+page, unlocks it.

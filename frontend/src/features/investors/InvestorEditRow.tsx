@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Button, Input } from "@/components";
+import { Button, DateField, Input } from "@/components";
 import { saveInvestor } from "@/store/features/investors";
 import { useAppDispatch } from "@/store/hooks";
 import type { Investor } from "@/types";
@@ -32,25 +32,26 @@ export function InvestorEditRow({ investor, total, onDone }: InvestorEditRowProp
   return (
     <>
       <tr className="border-b border-border">
-        <td className="px-3 py-3">
+        <td className="px-3 py-2">
           <Input aria-label="Name" value={name} onChange={(event) => setName(event.target.value)} />
         </td>
-        <td className="px-3 py-3">
+        <td className="px-3 py-2">
           <Input
             aria-label="Amount (USD)"
             type="number"
             min="0"
             step="0.01"
+            inputMode="decimal"
             value={amount}
             onChange={(event) => setAmount(event.target.value)}
           />
         </td>
-        <td className="px-3 py-3">
-          <Input aria-label="Date" type="date" value={date} onChange={(event) => setDate(event.target.value)} />
+        <td className="px-3 py-2">
+          <DateField value={date} onChange={setDate} />
         </td>
-        <td className="px-3 py-3 text-right font-mono tabular-nums">{formatShare(investor.amount, total)}</td>
-        <td className="px-3 py-3">
-          <div className="flex justify-end gap-2">
+        <td className="px-3 py-2 text-right font-mono text-sm tabular-nums">{formatShare(investor.amount, total)}</td>
+        <td className="px-3 py-2">
+          <div className="flex justify-end gap-1.5">
             <Button onClick={save}>Save</Button>
             <Button variant="secondary" onClick={onDone}>
               Cancel

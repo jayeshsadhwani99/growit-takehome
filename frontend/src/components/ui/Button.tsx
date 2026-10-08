@@ -13,13 +13,13 @@ const variantClass: Record<ButtonVariant, string> = {
   danger: "border border-red-200 bg-surface text-red-700 hover:bg-red-50",
 };
 
-/** Every action control is at least 44px tall. */
+/** Matches Input height so a form row stays on one line. */
 export function Button({ variant = "primary", className, type = "button", ...props }: ButtonProps) {
   return (
     <button
       type={type}
       className={cn(
-        "inline-flex min-h-11 items-center justify-center gap-2 rounded-lg px-4 text-sm font-medium outline-none transition focus-visible:ring-2 focus-visible:ring-accent/40 disabled:cursor-not-allowed disabled:opacity-50",
+        "inline-flex h-9 items-center justify-center gap-1.5 rounded-md px-3 text-sm font-medium outline-none transition focus-visible:ring-2 focus-visible:ring-accent/30 disabled:cursor-not-allowed disabled:opacity-50",
         variantClass[variant],
         className,
       )}

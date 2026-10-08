@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import { cn } from "@/utils/cn";
 
 interface FormFieldProps {
   id: string;
@@ -11,12 +12,15 @@ interface FormFieldProps {
 export function FormField({ id, label, error, children }: FormFieldProps) {
   return (
     <div>
-      <label htmlFor={id} className="mb-1 block text-sm font-medium">
+      <label
+        htmlFor={id}
+        className={cn("mb-1 block text-xs font-medium", error ? "text-red-700" : "text-muted")}
+      >
         {label}
       </label>
       {children}
       {error ? (
-        <p id={`${id}-error`} role="alert" className="mt-1 text-sm text-red-700">
+        <p id={`${id}-error`} role="alert" className="mt-1 text-xs font-medium text-red-700">
           {error}
         </p>
       ) : null}

@@ -1,4 +1,7 @@
 export { Button } from "./Button";
+export { Dialog, DialogContent, DialogDescription, DialogTitle } from "./Dialog";
 export { Card } from "./Card";
+export { DateField } from "./DateField";
+export { Dropdown } from "./Dropdown";
+export type { DropdownOption } from "./Dropdown";
 export { Input } from "./Input";
-export { Select } from "./Select";

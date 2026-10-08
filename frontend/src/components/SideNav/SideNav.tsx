@@ -6,7 +6,7 @@ import { BrandMark } from "./BrandMark";
 /** Desktop navigation. Hidden once the layout drops below the md breakpoint. */
 export function SideNav() {
   return (
-    <aside className="sticky top-0 hidden h-dvh w-60 shrink-0 flex-col border-r border-border bg-surface md:flex">
+    <aside className="sticky top-0 hidden h-dvh w-52 shrink-0 flex-col border-r border-border bg-surface md:flex">
       <BrandMark />
       <nav aria-label="Main" className="flex flex-1 flex-col gap-1 px-2">
         {NAV_ITEMS.map((item) => {
@@ -18,7 +18,7 @@ export function SideNav() {
               end={item.href === "/"}
               className={({ isActive }) =>
                 cn(
-                  "flex min-h-11 items-center gap-3 rounded-lg px-3 text-sm font-medium",
+                  "flex h-9 items-center gap-2 rounded-md px-2.5 text-sm font-medium",
                   isActive ? "bg-accent-soft text-accent" : "text-muted hover:bg-stone-50 hover:text-ink",
                 )
               }

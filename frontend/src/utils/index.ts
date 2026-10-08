@@ -1,5 +1,6 @@
 export { cn } from "./cn";
 export { createId } from "./createId";
+export { dateToIso } from "./dateToIso";
 export { describeHurdles } from "./describeHurdles";
 export { formatDate } from "./formatDate";
 export { formatMoney } from "./formatMoney";
@@ -8,6 +9,7 @@ export { hurdleColumnLabel } from "./hurdleColumnLabel";
 export { hurdleDescription } from "./hurdleDescription";
 export { hurdleStatusLabel } from "./hurdleStatusLabel";
 export { hurdleTitle } from "./hurdleTitle";
+export { isoToDate } from "./isoToDate";
 export { investorHasPayouts } from "./investorHasPayouts";
 export { runDateError } from "./runDateError";
 export { runErrorMessage } from "./runErrorMessage";

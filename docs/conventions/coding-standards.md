@@ -24,12 +24,12 @@ Write why a rule exists. Skip comments that restate the next line.
 
 ## UI
 
-- Real `label`, `button`, `table`, `progress`. Native `select` and `input`.
-- Tailwind only. Tokens are in `frontend/src/index.css` (`bg-surface`,
-  `text-accent`, `bg-background`).
+Follow the type scale and control rules in `CLAUDE.md`. Every screen is a
+`Page`. Dates use `DateField`. Choices use `Dropdown`. Amounts use `Input`.
+
+- Tokens live in `frontend/src/index.css` (`bg-surface`, `text-accent`).
 - Money goes through `formatMoney`. Tables right-align the cell and render
   `Money`.
-- Buttons and inputs use `min-h-11` (44px).
 
 ## Tests
 

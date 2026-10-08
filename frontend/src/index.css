@@ -39,3 +39,52 @@ progress.hurdle-progress::-webkit-progress-value,
 progress.hurdle-progress::-moz-progress-bar {
   background: var(--color-accent);
 }
+
+/* Spinners make number fields a different width than text fields. */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  margin: 0;
+  -webkit-appearance: none;
+}
+
+input[type="number"] {
+  appearance: textfield;
+  -moz-appearance: textfield;
+}
+
+.growit-calendar.react-datepicker {
+  border: 0;
+  font-family: inherit;
+  font-size: 0.875rem;
+}
+
+.growit-calendar .react-datepicker__header {
+  background: var(--color-surface);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.growit-calendar .react-datepicker__day,
+.growit-calendar .react-datepicker__day-name {
+  width: 2rem;
+  line-height: 2rem;
+  margin: 0.125rem;
+  border-radius: 0.375rem;
+}
+
+.growit-calendar .react-datepicker__day--keyboard-selected {
+  background: transparent;
+  color: inherit;
+}
+
+.growit-calendar .react-datepicker__day--selected {
+  background: var(--color-accent);
+  color: white;
+}
+
+.growit-calendar .react-datepicker__day--today {
+  font-weight: 600;
+}
+
+.growit-calendar .react-datepicker__day:hover {
+  background: var(--color-accent-soft);
+}

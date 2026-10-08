@@ -57,7 +57,26 @@ pnpm typecheck
 
 ## Design
 
-White cards on a light grey page. One teal accent (`#0f766e`). Money is
-monospace and right-aligned in tables via `Money` + `formatMoney`. Real
-`label`, `button`, and `table` elements. Inputs and buttons are at least 44px
-tall. Sidebar from the `md` breakpoint up; a bottom tab bar on a phone.
+Every screen is a `Page`. It fills the main column. Do not add a max-width or
+center the page. The only inset is `px-3 py-3` (`md:px-4`). Stack sections
+with `gap-3`. Cards are `rounded-lg p-3`.
+
+Type scale. Do not introduce other sizes:
+
+- Page title: `text-lg font-semibold`
+- Section title: `text-sm font-medium`
+- Body, inputs, table cells: `text-sm`
+- Labels, hints, table headers: `text-xs`
+- Money: `text-sm font-mono tabular-nums`, right-aligned in tables
+
+Controls share `controlClass` (`h-9`, `text-sm`, `rounded-md`). A label sits
+above its control. In a row, align the control bottoms, not the labels.
+
+- Amounts: `Input type="number"`. Spinners are hidden in `index.css`.
+- Dates: `DateField`. The calendar has month and year menus. It stores
+  `YYYY-MM-DD`. Do not use `<input type="date">`.
+- Choices: `Dropdown`. The menu is the trigger's width. Do not use `<select>`.
+- Phone tab targets stay 44px. Form controls stay `h-9`.
+
+White cards, light grey page, one teal accent (`#0f766e`). Real `label`,
+`button`, and `table` elements. Sidebar from `md` up; bottom tabs on a phone.

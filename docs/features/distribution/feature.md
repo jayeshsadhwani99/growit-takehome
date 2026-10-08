@@ -6,7 +6,11 @@ and never recomputed.
 
 ## Form
 
-- Date and amount, then "Run distribution".
+- The form lives in a dialog. An empty page shows "No runs" and the button
+  that opens it. Once a run exists, that button moves to the page header,
+  next to Reset runs.
+- Date and amount, then "Run distribution". A saved run closes the dialog so
+  the payouts are visible. An error leaves the dialog open.
 - The button is disabled when the amount is not greater than 0, there are no
   investors, or there are no hurdles. The form says which of those is wrong.
 - A date before the latest saved run is rejected under the date field. The

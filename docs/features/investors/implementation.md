@@ -5,8 +5,9 @@ Screen: `frontend/src/features/investors/`. Route: `/`.
 | Piece | File |
 | --- | --- |
 | Page | `InvestorsPage.tsx` |
-| Add form | `InvestorForm.tsx` |
+| Add form | `InvestorForm.tsx`, opened by `AddInvestorDialog.tsx` |
 | Table, row, edit row | `InvestorTable.tsx`, `InvestorRow.tsx`, `InvestorEditRow.tsx` |
+| Delete confirmation | `DeleteInvestorDialog.tsx` |
 | Validation | `src/utils/validateInvestorForm.ts` |
 | Share | `src/utils/formatShare.ts` |
 | Slice | `src/store/features/investors/state/investorsSlice.ts` |

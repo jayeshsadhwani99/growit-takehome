@@ -1,10 +1,15 @@
 import { type FormEvent, useState } from "react";
-import { Button, Card, FormField, Select } from "@/components";
+import { Button, Card, Dropdown, FormField } from "@/components";
 import { DEFAULT_PREF_RATE } from "@/constants";
 import { addHurdle } from "@/store/features/hurdles";
 import { useAppDispatch } from "@/store/hooks";
 import type { HurdleType } from "@/types";
 import { createId } from "@/utils";
+
+const HURDLE_OPTIONS = [
+  { value: "pref", label: "Preferred return" },
+  { value: "roc", label: "Return of capital" },
+];
 
 export function AddHurdleForm({ locked }: { locked: boolean }) {
   const dispatch = useAppDispatch();
@@ -22,19 +27,19 @@ export function AddHurdleForm({ locked }: { locked: boolean }) {
 
   return (
     <Card>
-      <form onSubmit={onSubmit} className="grid gap-4 sm:grid-cols-[1fr_auto] sm:items-end">
-        <FormField id="hurdle-type" label="Add a hurdle">
-          <Select
-            id="hurdle-type"
-            value={type}
-            disabled={locked}
-            onChange={(event) => setType(event.target.value as HurdleType)}
-          >
-            <option value="pref">Preferred return</option>
-            <option value="roc">Return of capital</option>
-          </Select>
-        </FormField>
-        <Button type="submit" disabled={locked}>
+      <form onSubmit={onSubmit} className="flex flex-wrap items-end gap-2">
+        <div className="w-full sm:w-80">
+          <FormField id="hurdle-type" label="Add a hurdle">
+            <Dropdown
+              id="hurdle-type"
+              value={type}
+              disabled={locked}
+              options={HURDLE_OPTIONS}
+              onChange={(value) => setType(value as HurdleType)}
+            />
+          </FormField>
+        </div>
+        <Button type="submit" disabled={locked} className="w-full sm:w-auto">
           Add
         </Button>
       </form>

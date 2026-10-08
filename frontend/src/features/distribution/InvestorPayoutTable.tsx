@@ -2,8 +2,8 @@ import { DataTable, Money } from "@/components";
 import type { Hurdle, Investor, Run } from "@/types";
 import { hurdleColumnLabel, sumPayouts } from "@/utils";
 
-const head = "px-3 py-3 text-left text-xs font-medium uppercase tracking-wide text-muted";
-const cell = "px-3 py-3 text-right whitespace-nowrap";
+const head = "px-3 py-2 text-left text-xs font-medium text-muted";
+const cell = "px-3 py-2 text-right text-sm whitespace-nowrap";
 
 export function InvestorPayoutTable({
   run,
@@ -31,7 +31,7 @@ export function InvestorPayoutTable({
       <tbody>
         {investors.map((investor) => (
           <tr key={investor.id} className="border-b border-border">
-            <th className="px-3 py-3 text-left font-medium" scope="row">
+            <th className="px-3 py-2 text-left text-sm font-medium" scope="row">
               {investor.name}
             </th>
             {hurdles.map((hurdle) => (
@@ -52,7 +52,7 @@ export function InvestorPayoutTable({
       </tbody>
       <tfoot>
         <tr className="border-t border-border font-medium">
-          <th className="px-3 py-3 text-left" scope="row">
+          <th className="px-3 py-2 text-left text-sm" scope="row">
             Total
           </th>
           {hurdles.map((hurdle) => (

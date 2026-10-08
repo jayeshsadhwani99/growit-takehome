@@ -27,8 +27,16 @@ export const hurdlesSlice = createSlice({
       const [hurdle] = state.splice(index, 1);
       if (hurdle) state.splice(next, 0, hurdle);
     },
+    hurdlePlaced: (state, action: PayloadAction<{ id: string; to: number }>) => {
+      const from = state.findIndex((item) => item.id === action.payload.id);
+      const to = action.payload.to;
+      if (from < 0 || to < 0 || to >= state.length || from === to) return;
+      const [hurdle] = state.splice(from, 1);
+      if (hurdle) state.splice(to, 0, hurdle);
+    },
   },
 });
 
-export const { hurdleAdded, hurdleRemoved, prefRateSet, hurdleMoved } = hurdlesSlice.actions;
+export const { hurdleAdded, hurdleRemoved, prefRateSet, hurdleMoved, hurdlePlaced } =
+  hurdlesSlice.actions;
 export const hurdlesReducer = hurdlesSlice.reducer;

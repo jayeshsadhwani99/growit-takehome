@@ -5,7 +5,7 @@ Screen: `frontend/src/features/distribution/`. Route: `/distribution`.
 | Piece | File |
 | --- | --- |
 | Page | `DistributionPage.tsx` |
-| Form | `RunForm.tsx` |
+| Form | `RunForm.tsx`, opened by `AddRunDialog.tsx` |
 | History | `RunHistory.tsx` |
 | Results | `RunResults.tsx`, `HurdleResultCard.tsx`, `InvestorPayoutTable.tsx` |
 | Status | `src/utils/describeHurdles.ts`, `hurdleStatusLabel.ts` |

@@ -15,5 +15,10 @@ dollars they put in, and the day those dollars start counting.
   records the row.
 - Edit and delete are refused once any run paid this investor. The buttons
   disable and the row says why. A newer investor with no payouts stays editable.
-- The date field is kept after a successful add so several people who invested
-  the same day are faster to enter. Name and amount clear.
+- Delete asks first. Cancel leaves the row. Confirm removes it.
+- The add form lives in a dialog. An empty table shows "No investors" and the
+  button that opens it. Once someone is on the table, that button moves to the
+  page header.
+- The dialog stays open after a successful add. The date field is kept so
+  several people who invested the same day are faster to enter. Name and amount
+  clear. Close dismisses the dialog.

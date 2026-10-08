@@ -8,7 +8,7 @@ export function AppShell({ children }: { children: ReactNode }) {
     <div className="flex min-h-dvh bg-background text-ink">
       <SideNav />
       <div className="flex min-w-0 flex-1 flex-col">
-        <div className="flex-1 pb-24 md:pb-8">{children}</div>
+        <div className="min-w-0 flex-1 pb-16 md:pb-4">{children}</div>
         <BottomNav />
       </div>
     </div>

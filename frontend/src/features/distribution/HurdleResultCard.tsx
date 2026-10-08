@@ -14,21 +14,21 @@ export function HurdleResultCard({
   index: number;
 }) {
   return (
-    <article className="rounded-xl border border-border bg-surface p-4">
+    <article className="rounded-lg border border-border bg-surface p-3">
       <div className="flex flex-wrap items-center justify-between gap-2">
-        <h3 className="font-medium">
+        <h3 className="text-sm font-medium">
           {index + 1}. {hurdleTitle(hurdle)}
         </h3>
         <StatusChip status={view.status} />
       </div>
-      <p className="mt-2 text-sm">
+      <p className="mt-1.5 text-sm">
         <span className="text-muted">Paid </span>
         <Money value={view.paid} />
         <span className="text-muted"> of </span>
         {view.owed === null ? <span className="font-mono">—</span> : <Money value={view.owed} />}
         <span className="text-muted"> owed</span>
       </p>
-      <div className="mt-3">
+      <div className="mt-2">
         <HurdleProgress progress={view.progress} />
       </div>
       {view.progress === null ? (

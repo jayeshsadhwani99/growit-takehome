@@ -1,10 +1,10 @@
 import { type FormEvent, useState } from "react";
-import { Button, Card, FormField, Input } from "@/components";
+import { Button, DateField, FormField, Input } from "@/components";
 import { investorAdded } from "@/store/features/investors";
 import { useAppDispatch } from "@/store/hooks";
 import { createId, validateInvestorForm, type InvestorFormErrors } from "@/utils";
 
-export function InvestorForm() {
+export function InvestorForm({ onClose }: { onClose: () => void }) {
   const dispatch = useAppDispatch();
   const [name, setName] = useState("");
   const [amount, setAmount] = useState("");
@@ -23,46 +23,54 @@ export function InvestorForm() {
   }
 
   return (
-    <Card>
-      <form onSubmit={onSubmit} className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4" noValidate>
-        <FormField id="investor-name" label="Name" error={errors.name}>
-          <Input
-            id="investor-name"
-            value={name}
-            onChange={(event) => setName(event.target.value)}
-            aria-invalid={Boolean(errors.name)}
-            aria-describedby={errors.name ? "investor-name-error" : undefined}
+    <form onSubmit={onSubmit} className="mt-3 flex flex-col gap-3" noValidate>
+      <FormField id="investor-name" label="Name" error={errors.name}>
+        <Input
+          id="investor-name"
+          value={name}
+          onChange={(event) => {
+            setName(event.target.value);
+            setErrors((current) => ({ ...current, name: undefined }));
+          }}
+          aria-invalid={Boolean(errors.name)}
+          aria-describedby={errors.name ? "investor-name-error" : undefined}
+        />
+      </FormField>
+      <FormField id="investor-amount" label="Amount (USD)" error={errors.amount}>
+        <Input
+          id="investor-amount"
+          type="number"
+          min="0"
+          step="0.01"
+          inputMode="decimal"
+          value={amount}
+          onChange={(event) => {
+            setAmount(event.target.value);
+            setErrors((current) => ({ ...current, amount: undefined }));
+          }}
+          aria-invalid={Boolean(errors.amount)}
+          aria-describedby={errors.amount ? "investor-amount-error" : undefined}
+        />
+      </FormField>
+      <FormField id="investor-date" label="Date" error={errors.date}>
+        <DateField
+          id="investor-date"
+          value={date}
+          onChange={(next) => {
+            setDate(next);
+            setErrors((current) => ({ ...current, date: undefined }));
+          }}
+          invalid={Boolean(errors.date)}
+            describedBy={errors.date ? "investor-date-error" : undefined}
+            inline
           />
-        </FormField>
-        <FormField id="investor-amount" label="Amount (USD)" error={errors.amount}>
-          <Input
-            id="investor-amount"
-            type="number"
-            min="0"
-            step="0.01"
-            inputMode="decimal"
-            value={amount}
-            onChange={(event) => setAmount(event.target.value)}
-            aria-invalid={Boolean(errors.amount)}
-            aria-describedby={errors.amount ? "investor-amount-error" : undefined}
-          />
-        </FormField>
-        <FormField id="investor-date" label="Date" error={errors.date}>
-          <Input
-            id="investor-date"
-            type="date"
-            value={date}
-            onChange={(event) => setDate(event.target.value)}
-            aria-invalid={Boolean(errors.date)}
-            aria-describedby={errors.date ? "investor-date-error" : undefined}
-          />
-        </FormField>
-        <div className="sm:col-span-2 lg:col-span-1 lg:self-end">
-          <Button type="submit" className="w-full">
-            Add investor
-          </Button>
-        </div>
-      </form>
-    </Card>
+      </FormField>
+      <div className="flex justify-end gap-1.5">
+        <Button variant="secondary" onClick={onClose}>
+          Close
+        </Button>
+        <Button type="submit">Add investor</Button>
+      </div>
+    </form>
   );
 }
