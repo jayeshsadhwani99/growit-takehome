@@ -1,1 +1,1 @@
-export { DistributionPage } from "./DistributionPage";
+export { DistributionPageSuspense } from "./DistributionPageSuspense";

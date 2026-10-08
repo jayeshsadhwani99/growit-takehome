@@ -4,7 +4,8 @@ Screen: `frontend/src/features/investors/`. Route: `/`.
 
 | Piece | File |
 | --- | --- |
-| Page | `InvestorsPage.tsx` |
+| Page | `InvestorsPage.tsx`, loaded by `InvestorsPageSuspense.tsx` |
+| Skeleton | `InvestorsPageSkeleton.tsx` |
 | Add form | `InvestorForm.tsx`, opened by `AddInvestorDialog.tsx` |
 | Table, row, edit row | `InvestorTable.tsx`, `InvestorRow.tsx`, `InvestorEditRow.tsx` |
 | Delete confirmation | `DeleteInvestorDialog.tsx` |

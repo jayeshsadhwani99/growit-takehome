@@ -4,7 +4,8 @@ Screen: `frontend/src/features/distribution/`. Route: `/distribution`.
 
 | Piece | File |
 | --- | --- |
-| Page | `DistributionPage.tsx` |
+| Page | `DistributionPage.tsx`, loaded by `DistributionPageSuspense.tsx` |
+| Skeleton | `DistributionPageSkeleton.tsx` |
 | Form | `RunForm.tsx`, opened by `AddRunDialog.tsx` |
 | History | `RunHistory.tsx` |
 | Results | `RunResults.tsx`, `HurdleResultCard.tsx`, `InvestorPayoutTable.tsx` |

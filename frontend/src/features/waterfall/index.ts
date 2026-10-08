@@ -1,1 +1,1 @@
-export { WaterfallPage } from "./WaterfallPage";
+export { WaterfallPageSuspense } from "./WaterfallPageSuspense";

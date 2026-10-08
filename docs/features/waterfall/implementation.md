@@ -4,7 +4,8 @@ Screen: `frontend/src/features/waterfall/`. Route: `/waterfall`.
 
 | Piece | File |
 | --- | --- |
-| Page | `WaterfallPage.tsx` |
+| Page | `WaterfallPage.tsx`, loaded by `WaterfallPageSuspense.tsx` |
+| Skeleton | `WaterfallPageSkeleton.tsx` |
 | Add form | `AddHurdleForm.tsx` |
 | Card, rate, list | `HurdleCard.tsx`, `PrefRateField.tsx`, `HurdleList.tsx` |
 | Drag | `HurdleSortable.tsx`, `restrictHurdleDrag.ts`, `verticalKeyboardCoordinates.ts` |

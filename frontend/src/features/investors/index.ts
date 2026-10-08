@@ -1,1 +1,1 @@
-export { InvestorsPage } from "./InvestorsPage";
+export { InvestorsPageSuspense } from "./InvestorsPageSuspense";

@@ -15,3 +15,5 @@ read, and it should still be that way after a reload.
   gone, so the same control is on the top bar.
 - The choice is part of the persisted store, so it shares the deal's
   `localStorage` entry.
+- Switching themes eases the surfaces and fades the shell. The class still
+  flips immediately.

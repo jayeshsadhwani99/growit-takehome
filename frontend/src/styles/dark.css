@@ -28,3 +28,17 @@
   background: var(--color-accent);
   color: #042f2e;
 }
+
+@media (prefers-reduced-motion: no-preference) {
+  body,
+  .bg-background,
+  .bg-surface,
+  .bg-wash,
+  .text-ink,
+  .text-muted,
+  .border-border {
+    transition-property: background-color, color, border-color;
+    transition-duration: 180ms;
+    transition-timing-function: ease-out;
+  }
+}

@@ -6,6 +6,7 @@
 | Resolved class | `state/resolveTheme.ts` |
 | Selector | `state/selectors/selectTheme.ts` |
 | Class on `html` | `src/components/ThemeSync/ThemeSync.tsx` |
+| Fade | `src/components/ThemeTransition/ThemeTransition.tsx` |
 | Choice | `src/components/ThemeToggle/ThemeToggle.tsx` |
 | Phone bar | `src/components/PhoneBar/PhoneBar.tsx` |
 | Tokens | `src/index.css`, `src/styles/dark.css` |
