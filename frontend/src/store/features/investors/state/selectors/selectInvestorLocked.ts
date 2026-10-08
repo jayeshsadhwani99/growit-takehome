@@ -1,5 +1,5 @@
 import type { RootState } from "@/store";
-import { investorHasPayouts } from "@/utils/investorHasPayouts";
+import { investorHasPayouts } from "@/utils";
 
 export function selectInvestorLocked(state: RootState, investorId: string): boolean {
   return investorHasPayouts(state.runs.items, investorId);

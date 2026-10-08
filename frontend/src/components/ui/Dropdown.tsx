@@ -1,7 +1,7 @@
 import type { ReactNode } from "react";
 import * as Select from "@radix-ui/react-select";
 import { Check, ChevronDown } from "lucide-react";
-import { cn } from "@/utils/cn";
+import { cn } from "@/utils";
 import { controlClass } from "./controlClass";
 
 export interface DropdownOption {

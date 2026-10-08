@@ -1,6 +1,6 @@
 import { NavLink } from "react-router-dom";
 import { NAV_ITEMS } from "@/constants";
-import { cn } from "@/utils/cn";
+import { cn } from "@/utils";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { BrandMark } from "./BrandMark";
 

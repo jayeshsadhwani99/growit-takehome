@@ -1,5 +1,5 @@
 import type { AppThunk } from "@/store/hooks";
-import { investorHasPayouts } from "@/utils/investorHasPayouts";
+import { investorHasPayouts } from "@/utils";
 import { investorRemoved } from "../investorsSlice";
 
 /** Past payouts name this investor. Deleting the row would orphan that history. */

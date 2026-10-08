@@ -22,7 +22,7 @@ frontend/src
         actions/        one thunk per file, when a reducer is not enough
       index.ts
   components/           shared chrome and controls
-    ui/                 button, input, select, card
+    ui/                 button, input, dropdown, card
     <Component>/        component file + index.ts
   features/<feature>/   one screen, split into the pieces that screen owns
 ```

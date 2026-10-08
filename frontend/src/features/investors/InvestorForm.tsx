@@ -59,8 +59,8 @@ export function InvestorForm({ onClose }: { onClose: () => void }) {
             setErrors((current) => ({ ...current, date: undefined }));
           }}
           invalid={Boolean(errors.date)}
-            describedBy={errors.date ? "investor-date-error" : undefined}
-          />
+          describedBy={errors.date ? "investor-date-error" : undefined}
+        />
       </FormField>
       <div className="flex justify-end gap-1.5">
         <Button variant="secondary" onClick={onClose}>

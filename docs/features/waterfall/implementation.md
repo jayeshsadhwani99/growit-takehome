@@ -7,6 +7,7 @@ Screen: `frontend/src/features/waterfall/`. Route: `/waterfall`.
 | Page | `WaterfallPage.tsx` |
 | Add form | `AddHurdleForm.tsx` |
 | Card, rate, list | `HurdleCard.tsx`, `PrefRateField.tsx`, `HurdleList.tsx` |
+| Drag | `HurdleSortable.tsx`, `restrictHurdleDrag.ts`, `verticalKeyboardCoordinates.ts` |
 | Arrow and end box | `OverflowArrow.tsx`, `UndistributedBox.tsx` |
 | Copy | `src/utils/hurdleTitle.ts`, `hurdleDescription.ts` |
 | Slice | `src/store/features/hurdles/state/hurdlesSlice.ts` |

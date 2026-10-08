@@ -1,16 +1,13 @@
 import type { ComponentProps } from "react";
 import * as DialogPrimitive from "@radix-ui/react-dialog";
-import { cn } from "@/utils/cn";
+import { cn } from "@/utils";
+import { keepInside } from "./keepInside";
 
 export const Dialog = DialogPrimitive.Root;
 export const DialogTitle = DialogPrimitive.Title;
 export const DialogDescription = DialogPrimitive.Description;
 
-function keepPopoverOpen(event: { target: EventTarget | null; preventDefault: () => void }): void {
-  if (event.target instanceof Element && event.target.closest("[data-radix-popper-content-wrapper]")) {
-    event.preventDefault();
-  }
-}
+const keepPopoverOpen = keepInside("[data-radix-popper-content-wrapper]");
 
 export function DialogContent({
   className,

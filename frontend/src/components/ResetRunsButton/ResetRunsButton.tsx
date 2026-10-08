@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { runsReset, selectRuns } from "@/store/features/runs";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
-import { Button } from "@/components/ui/Button";
+import { Button } from "@/components/ui";
 
 /** Two steps, because this deletes history and unlocks the waterfall. */
 export function ResetRunsButton() {

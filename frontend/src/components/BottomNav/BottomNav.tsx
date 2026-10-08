@@ -1,6 +1,6 @@
 import { NavLink } from "react-router-dom";
 import { NAV_ITEMS } from "@/constants";
-import { cn } from "@/utils/cn";
+import { cn } from "@/utils";
 
 /** Phone tab bar. The same three destinations as the sidebar, with a 44px target. */
 export function BottomNav() {
@@ -19,7 +19,7 @@ export function BottomNav() {
                 end={item.href === "/"}
                 className={({ isActive }) =>
                   cn(
-                    "flex min-h-11 flex-col items-center justify-center gap-0.5 px-1 py-2 text-center text-[11px] font-medium leading-tight",
+                    "flex min-h-11 flex-col items-center justify-center gap-0.5 px-1 py-2 text-center text-xs font-medium leading-tight",
                     isActive ? "text-accent" : "text-muted",
                   )
                 }

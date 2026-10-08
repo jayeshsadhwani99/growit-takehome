@@ -1,6 +1,6 @@
 import type { Investor } from "@/types";
 import type { AppThunk } from "@/store/hooks";
-import { investorHasPayouts } from "@/utils/investorHasPayouts";
+import { investorHasPayouts } from "@/utils";
 import { investorUpdated } from "../investorsSlice";
 
 /** Same lock as delete: a paid investor's name, amount, and date stay put. */

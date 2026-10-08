@@ -3,6 +3,7 @@
 | Piece | File |
 | --- | --- |
 | Slice | `src/store/features/theme/state/themeSlice.ts` |
+| Resolved class | `state/resolveTheme.ts` |
 | Selector | `state/selectors/selectTheme.ts` |
 | Class on `html` | `src/components/ThemeSync/ThemeSync.tsx` |
 | Choice | `src/components/ThemeToggle/ThemeToggle.tsx` |

@@ -1,15 +1,12 @@
 import type { ComponentProps } from "react";
 import * as PopoverPrimitive from "@radix-ui/react-popover";
-import { cn } from "@/utils/cn";
+import { cn } from "@/utils";
+import { keepInside } from "./keepInside";
 
 export const Popover = PopoverPrimitive.Root;
 export const PopoverTrigger = PopoverPrimitive.Trigger;
 
-function keepMenuOpen(event: { target: EventTarget | null; preventDefault: () => void }): void {
-  if (event.target instanceof Element && event.target.closest("[role='listbox']")) {
-    event.preventDefault();
-  }
-}
+const keepMenuOpen = keepInside("[role='listbox']");
 
 export function PopoverContent({
   className,

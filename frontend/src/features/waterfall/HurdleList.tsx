@@ -7,6 +7,7 @@ import {
   useSensor,
   useSensors,
   type DragEndEvent,
+  type Modifier,
 } from "@dnd-kit/core";
 import { SortableContext, verticalListSortingStrategy } from "@dnd-kit/sortable";
 import { EmptyState } from "@/components";
@@ -22,7 +23,10 @@ import { verticalKeyboardCoordinates } from "./verticalKeyboardCoordinates";
 export function HurdleList({ hurdles, locked }: { hurdles: Hurdle[]; locked: boolean }) {
   const dispatch = useAppDispatch();
   const listRef = useRef<HTMLDivElement>(null);
-  const modifiers = useMemo(() => [restrictHurdleDrag(listRef)], []);
+  const modifiers = useMemo<Modifier[]>(
+    () => [({ transform, draggingNodeRect }) => restrictHurdleDrag(transform, draggingNodeRect, listRef.current)],
+    [],
+  );
   const sensors = useSensors(
     useSensor(PointerSensor, { activationConstraint: { distance: 6 } }),
     useSensor(KeyboardSensor, { coordinateGetter: verticalKeyboardCoordinates }),
