@@ -6,6 +6,7 @@ export { formatDate } from "./formatDate";
 export { formatMoney } from "./formatMoney";
 export { formatShare } from "./formatShare";
 export { hurdleColumnLabel } from "./hurdleColumnLabel";
+export { hurdleFill } from "./hurdleFill";
 export { hurdleDescription } from "./hurdleDescription";
 export { hurdleStatusLabel } from "./hurdleStatusLabel";
 export { hurdleTitle } from "./hurdleTitle";

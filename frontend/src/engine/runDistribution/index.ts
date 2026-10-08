@@ -1,4 +1,4 @@
-import type { Hurdle, Investor, Payout, Run } from "@/types";
+import type { Hurdle, HurdleShare, Investor, Payout, Run } from "@/types";
 import { createId } from "@/utils";
 import { buildAccounts } from "./buildAccounts";
 import { owedOnHurdle } from "./owedOnHurdle";
@@ -19,23 +19,25 @@ export function runDistribution(
 ): Run {
   const accounts = buildAccounts(investors, hurdles, previousRuns);
   const payouts: Payout[] = [];
+  const shares: HurdleShare[] = [];
   let cash = amount;
 
   for (const hurdle of hurdles) {
-    if (cash <= 0) break;
-    const split = splitHurdle(
-      cash,
-      accounts.map((account) => ({
-        investorId: account.investorId,
-        owed: owedOnHurdle(account, hurdle, date),
-      })),
-    );
+    const owed = accounts.map((account) => ({
+      investorId: account.investorId,
+      owed: owedOnHurdle(account, hurdle, date),
+    }));
+    const split = splitHurdle(cash, owed);
     cash -= split.spent;
-    for (const payout of split.payouts) {
-      payouts.push({ investorId: payout.investorId, hurdleId: hurdle.id, amount: payout.amount });
-      recordPayout(accounts, hurdle, payout.investorId, payout.amount);
+    for (const share of owed) {
+      const paid = split.payouts.find((payout) => payout.investorId === share.investorId)?.amount ?? 0;
+      if (paid > 0) {
+        payouts.push({ investorId: share.investorId, hurdleId: hurdle.id, amount: paid });
+        recordPayout(accounts, hurdle, share.investorId, paid);
+      }
+      shares.push({ investorId: share.investorId, hurdleId: hurdle.id, owed: share.owed, paid });
     }
   }
 
-  return { id: createId(), date, amount, payouts, leftover: cash };
+  return { id: createId(), date, amount, payouts, shares, leftover: cash };
 }

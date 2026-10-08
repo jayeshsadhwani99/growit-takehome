@@ -9,8 +9,10 @@ runs: { items: Run[]; selectedId: string | null }
 theme: "system" | "light" | "dark"
 ```
 
-Types live in `frontend/src/types/`. A run is `{ id, date, amount, payouts, leftover }`.
-A payout is `{ investorId, hurdleId, amount }`.
+Types live in `frontend/src/types/`. A run is `{ id, date, amount, payouts, shares, leftover }`.
+A payout is `{ investorId, hurdleId, amount }`. A share is
+`{ investorId, hurdleId, owed, paid }`. `shares` is missing on runs saved
+before owed amounts were stored.
 
 ## Why it is stored this way
 

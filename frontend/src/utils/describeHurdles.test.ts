@@ -28,5 +28,18 @@ describe("describeHurdles", () => {
     );
     expect(views.map((view) => view.status)).toEqual(["partial", "not-reached"]);
     expect(views[0]?.owed).toBeNull();
+    expect(views[0]?.shares).toEqual([]);
+  });
+
+  it("uses stored shares for owed and a real percentage", () => {
+    const withShares = run([{ investorId: "a", hurdleId: "roc", amount: 30 }], 0);
+    withShares.shares = [
+      { investorId: "a", hurdleId: "pref", owed: 10, paid: 10 },
+      { investorId: "a", hurdleId: "roc", owed: 100, paid: 30 },
+    ];
+    const views = describeHurdles(withShares, hurdles);
+    expect(views.map((view) => view.status)).toEqual(["filled", "partial"]);
+    expect(views[1]?.owed).toBe(100);
+    expect(views[1]?.progress).toBe(30);
   });
 });

@@ -21,8 +21,11 @@ and never recomputed.
 ## Results
 
 - History lists runs, newest first. Click one to view it.
-- Each hurdle shows paid versus owed, a progress bar, and a chip: Filled,
-  Partly filled, or Not reached. How owed is inferred is in
+- Each hurdle is an accordion, closed until opened. The header shows paid versus owed, a progress
+  bar, and a chip: Filled, Partly filled, or Not reached. Opening it lists
+  each investor on that hurdle, with their own paid-versus-owed bar.
+- Owed is the share saved on the run. Runs saved before that replay the same
+  inputs so the bars still have a denominator. See
   `docs/architecture/assumptions.md`.
 - The investor table has one column per hurdle, a total paid column, and a
   totals row. Investors added after a run show $0 for that run.

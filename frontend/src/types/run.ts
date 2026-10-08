@@ -1,3 +1,4 @@
+import type { HurdleShare } from "./hurdleShare";
 import type { Payout } from "./payout";
 
 /**
@@ -11,6 +12,11 @@ export interface Run {
   /** Dollars available for this distribution. */
   amount: number;
   payouts: Payout[];
+  /**
+   * Owed and paid per investor per hurdle. Missing on runs saved before this
+   * was stored; those still infer status from payouts alone.
+   */
+  shares?: HurdleShare[];
   /** Dollars left after the last hurdle. */
   leftover: number;
 }

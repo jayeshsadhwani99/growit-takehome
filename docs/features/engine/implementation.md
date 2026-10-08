@@ -22,4 +22,5 @@ inside `runDistribution`.
 
 The function should assign the run id (the form does not). It should not read
 the store. Previous runs are an argument so the same inputs always produce
-the same run.
+the same payouts. The returned run also stores `shares`, one row per investor
+per hurdle, so owed amounts are part of the snapshot.

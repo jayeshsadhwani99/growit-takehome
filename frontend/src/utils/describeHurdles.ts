@@ -1,26 +1,15 @@
 import type { Hurdle, HurdleView, Run } from "@/types";
-import { sumPayouts } from "./sumPayouts";
+import { hurdleFill } from "./hurdleFill";
+import { inferHurdleViews } from "./inferHurdleViews";
 
-/**
- * Status is inferred from stored payouts only. Owed is not on the Run, and
- * runs are never recomputed, so the hurdle where cash ran out is "partial"
- * even if it was filled to the exact dollar.
- */
+/** Stored shares carry the real owed amount. Older runs still infer status from payouts. */
 export function describeHurdles(run: Run, hurdles: Hurdle[]): HurdleView[] {
-  const paid = hurdles.map((hurdle) =>
-    sumPayouts(run.payouts, (payout) => payout.hurdleId === hurdle.id),
-  );
-  const lastPaid = paid.findLastIndex((amount) => amount > 0);
+  if (!run.shares) return inferHurdleViews(run, hurdles);
 
-  return hurdles.map((hurdle, index) => {
-    const amount = paid[index] ?? 0;
-    const cleared = run.leftover > 0 || (lastPaid >= 0 && index < lastPaid);
-    if (cleared) {
-      return { hurdleId: hurdle.id, paid: amount, owed: amount, status: "filled", progress: 100 };
-    }
-    if (index === lastPaid) {
-      return { hurdleId: hurdle.id, paid: amount, owed: null, status: "partial", progress: null };
-    }
-    return { hurdleId: hurdle.id, paid: amount, owed: null, status: "not-reached", progress: 0 };
+  return hurdles.map((hurdle) => {
+    const shares = run.shares?.filter((share) => share.hurdleId === hurdle.id) ?? [];
+    const paid = shares.reduce((sum, share) => sum + share.paid, 0);
+    const owed = shares.reduce((sum, share) => sum + share.owed, 0);
+    return { hurdleId: hurdle.id, paid, owed, shares, ...hurdleFill(paid, owed) };
   });
 }

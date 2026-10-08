@@ -1,7 +1,6 @@
 # Engine — why
 
-The UI can record a deal. It cannot yet decide who gets paid. That decision is
-a pure function so it can be tested without React or the store.
+Who gets paid is a pure function so it can be tested without React or the store.
 
 ## `yearFraction(from, to)`
 
@@ -20,7 +19,8 @@ Output: one `Run`, with an id assigned here. The steps are:
 2. Walk hurdles in order. Split this hurdle's cash in proportion to what each
    investor is still owed. An investor owed nothing gets nothing.
 3. Cash left after a hurdle is the input to the next one. Cash left after the
-   last hurdle is `leftover`.
+   last hurdle is `leftover`. Each investor's owed and paid amount is stored on
+   the run as `shares`, including hurdles the cash never reached.
 
 Unreturned capital changes when return of capital is paid, including in an
 earlier hurdle of this same run. Interest for a later preferred return uses
@@ -32,7 +32,7 @@ before that day, they are owed nothing yet. Someone added after earlier runs
 catches up here, because step 1 looks at their date and at what they have
 already been paid (nothing).
 
-## The skipped case
+## The acceptance case
 
 Alice invested $100,000 on 2025-01-01. Bob invested $50,000 on 2025-07-01.
 Waterfall: preferred return at 8%, then return of capital. Run on 2026-01-01

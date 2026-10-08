@@ -1,6 +1,7 @@
 import { Money } from "@/components";
 import type { Hurdle, Investor, Run } from "@/types";
 import { describeHurdles, formatDate } from "@/utils";
+import { sharesForRun } from "./sharesForRun";
 import { HurdleResultCard } from "./HurdleResultCard";
 import { InvestorPayoutTable } from "./InvestorPayoutTable";
 import { LeftoverCash } from "./LeftoverCash";
@@ -9,12 +10,14 @@ export function RunResults({
   run,
   investors,
   hurdles,
+  previousRuns,
 }: {
   run: Run;
   investors: Investor[];
   hurdles: Hurdle[];
+  previousRuns: Run[];
 }) {
-  const views = describeHurdles(run, hurdles);
+  const views = describeHurdles({ ...run, shares: sharesForRun(run, investors, hurdles, previousRuns) }, hurdles);
 
   return (
     <div className="flex flex-col gap-2">
@@ -27,7 +30,7 @@ export function RunResults({
       {views.map((view, index) => {
         const hurdle = hurdles.find((item) => item.id === view.hurdleId);
         if (!hurdle) return null;
-        return <HurdleResultCard key={view.hurdleId} hurdle={hurdle} view={view} index={index} />;
+        return <HurdleResultCard key={view.hurdleId} hurdle={hurdle} view={view} index={index} investors={investors} />;
       })}
       <InvestorPayoutTable run={run} investors={investors} hurdles={hurdles} />
       <LeftoverCash amount={run.leftover} />

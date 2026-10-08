@@ -8,7 +8,8 @@ Screen: `frontend/src/features/distribution/`. Route: `/distribution`.
 | Skeleton | `DistributionPageSkeleton.tsx` |
 | Form | `RunForm.tsx`, opened by `AddRunDialog.tsx` |
 | History | `RunHistory.tsx` |
-| Results | `RunResults.tsx`, `HurdleResultCard.tsx`, `InvestorPayoutTable.tsx` |
+| Results | `RunResults.tsx`, `HurdleResultCard.tsx`, `HurdleShareRow.tsx`, `InvestorPayoutTable.tsx` |
+| Older runs | `sharesForRun.ts` replays when `run.shares` is missing |
 | Status | `src/utils/describeHurdles.ts`, `hurdleStatusLabel.ts` |
 | Gates | `src/utils/runDateError.ts`, `runSubmitBlock.ts` |
 | Engine error copy | `src/utils/runErrorMessage.ts` |

@@ -34,5 +34,5 @@ Follow the type scale and control rules in `CLAUDE.md`. Every screen is a
 ## Tests
 
 Pure functions and reducers have Vitest tests next to the file. The engine
-case in `runDistribution.test.ts` stays skipped until the function exists.
+acceptance case lives in `runDistribution.test.ts`.
 No network and no `localStorage` in tests.

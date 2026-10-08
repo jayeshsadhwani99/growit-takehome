@@ -19,6 +19,8 @@ describe("runDistribution", () => {
     expect(Math.abs(paid(run, "alice") - 4792)).toBeLessThanOrEqual(1);
     expect(Math.abs(paid(run, "bob") - 1208)).toBeLessThanOrEqual(1);
     expect(paid(run, "alice", "roc") + paid(run, "bob", "roc")).toBe(0);
+    expect(run.shares?.find((share) => share.investorId === "alice" && share.hurdleId === "pref")?.owed).toBeCloseTo(8_000, 5);
+    expect(run.shares?.find((share) => share.investorId === "bob" && share.hurdleId === "roc")?.owed).toBe(50_000);
     expect(run.leftover).toBe(0);
     expect(run.date).toBe("2026-01-01");
     expect(run.amount).toBe(6_000);
@@ -39,6 +41,14 @@ describe("runDistribution", () => {
     expect(paid(run, "alice", "roc")).toBeCloseTo(100_000, 5);
     expect(paid(run, "alice", "pref-2")).toBe(0);
     expect(run.leftover).toBeCloseTo(892_000, 5);
+  });
+
+  it("still records what a later preferred return is owed when cash runs out", () => {
+    const laterPref = { id: "pref-2", type: "pref" as const, rate: 2 };
+    const run = runDistribution([alice], [pref, roc, laterPref], [], "2026-01-01", 10_000);
+    const later = run.shares?.find((share) => share.hurdleId === "pref-2");
+    expect(later?.paid).toBe(0);
+    expect(later?.owed).toBeGreaterThan(0);
   });
 
   it("owes nothing before the investor's own date", () => {

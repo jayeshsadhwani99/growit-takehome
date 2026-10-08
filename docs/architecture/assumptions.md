@@ -16,23 +16,19 @@ The `365` denominator in `yearFraction.ts` is the only place to change that.
 ## Preferred return rate is a percent
 
 The field is "Annual rate (%)". Storing `8` for 8% keeps the input and the
-state the same number. The engine must divide by 100. The skipped test uses
+state the same number. The engine must divide by 100. The acceptance test uses
 `rate: 8`.
 
-## Owed is not on a saved run
+## Owed is stored on the run
 
-The run type has payouts and leftover, not the amount that was owed. The
-results screen infers status from those:
+A new run stores `shares`: what each investor was owed on each hurdle, and
+what this run paid. The bar is paid divided by owed. A preferred return after
+return of capital is still a gate. If cash ran out earlier, that gate's paid
+amount is $0 and its owed amount is the interest on capital still outstanding.
 
-- Leftover cash means every hurdle was filled (including a hurdle that was
-  owed nothing).
-- If leftover is zero, hurdles before the last one that received cash are
-  filled, that last one is partly filled, and the rest were not reached.
-
-A hurdle filled to the exact dollar with nothing left over looks "partly
-filled". The bar stays indeterminate there instead of inventing a percent.
-Snapshotting owed onto the run would remove that ambiguity. It would also
-widen the type the engine returns, so it is not done yet.
+Runs saved before `shares` existed have only payouts and leftover. The screen
+replays the engine with the runs that came before them so those bars still
+have a denominator. The stored payouts are not rewritten.
 
 ## Same-day runs are allowed
 

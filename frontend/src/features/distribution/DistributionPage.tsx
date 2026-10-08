@@ -38,7 +38,12 @@ export function DistributionPage() {
         <div className="grid gap-3 lg:grid-cols-[14rem_minmax(0,1fr)]">
           <RunHistory runs={runs} selectedId={selected?.id ?? null} />
           {selected ? (
-            <RunResults run={selected} investors={investors} hurdles={hurdles} />
+            <RunResults
+              run={selected}
+              investors={investors}
+              hurdles={hurdles}
+              previousRuns={runs.slice(0, Math.max(0, runs.findIndex((item) => item.id === selected.id)))}
+            />
           ) : (
             <EmptyState title="No runs" description="Pick a run from the history to see its payouts." />
           )}
