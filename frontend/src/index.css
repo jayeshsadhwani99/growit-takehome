@@ -1,8 +1,13 @@
 @import "tailwindcss";
+@import "./styles/dark.css";
+
+/* Class on html, not the system setting. .dark overrides the tokens. */
+@custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
   --color-background: #f4f5f4;
   --color-surface: #ffffff;
+  --color-wash: #fafaf9;
   --color-ink: #1c1917;
   --color-muted: #78716c;
   --color-border: #e7e5e4;
@@ -10,6 +15,10 @@
   --color-accent-soft: #ccfbf1;
   --font-sans: ui-sans-serif, system-ui, sans-serif;
   --font-mono: ui-monospace, sfmono-regular, menlo, monospace;
+}
+
+:root {
+  color-scheme: light;
 }
 
 body {

@@ -14,11 +14,13 @@ import { browserStorage } from "./browserStorage";
 import { hurdlesReducer } from "./features/hurdles";
 import { investorsReducer } from "./features/investors";
 import { runsReducer } from "./features/runs";
+import { themeReducer } from "./features/theme";
 
 const dealReducer = combineReducers({
   investors: investorsReducer,
   hurdles: hurdlesReducer,
   runs: runsReducer,
+  theme: themeReducer,
 });
 
 const persistedReducer = persistReducer({ key: PERSIST_KEY, storage: browserStorage }, dealReducer);

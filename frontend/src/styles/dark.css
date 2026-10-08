@@ -1,0 +1,30 @@
+/* Same token names as light, so bg-surface and text-ink flip without new utilities. */
+.dark {
+  color-scheme: dark;
+  --color-background: #1c1917;
+  --color-surface: #292524;
+  --color-wash: #35302c;
+  --color-ink: #fafaf9;
+  --color-muted: #a8a29e;
+  --color-border: #44403c;
+  --color-accent: #2dd4bf;
+  --color-accent-soft: #134e4a;
+}
+
+.dark .growit-calendar,
+.dark .growit-calendar .react-datepicker__header,
+.dark .growit-calendar .react-datepicker__day,
+.dark .growit-calendar .react-datepicker__day-name {
+  background: var(--color-surface);
+  color: var(--color-ink);
+}
+
+.dark .growit-calendar .react-datepicker__day--outside-month {
+  color: var(--color-muted);
+}
+
+.dark .growit-calendar .react-datepicker__day--selected,
+.dark .growit-calendar .react-datepicker__day--selected:hover {
+  background: var(--color-accent);
+  color: #042f2e;
+}

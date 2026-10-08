@@ -62,7 +62,7 @@ export function InvestorEditRow({ investor, total, onDone }: InvestorEditRowProp
       {message ? (
         <tr>
           <td colSpan={5} className="px-3 pb-3">
-            <p role="alert" className="text-sm text-red-700">
+            <p role="alert" className="text-sm text-red-700 dark:text-red-300">
               {message}
             </p>
           </td>

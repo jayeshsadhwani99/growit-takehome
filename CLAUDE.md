@@ -78,5 +78,8 @@ above its control. In a row, align the control bottoms, not the labels.
 - Choices: `Dropdown`. The menu is the trigger's width. Do not use `<select>`.
 - Phone tab targets stay 44px. Form controls stay `h-9`.
 
-White cards, light grey page, one teal accent (`#0f766e`). Real `label`,
-`button`, and `table` elements. Sidebar from `md` up; bottom tabs on a phone.
+Cards use `bg-surface`, the page uses `bg-background`, hovers use `bg-wash`.
+One teal accent. The `dark` class on `html` flips those tokens. Real `label`,
+`button`, and `table` elements. Sidebar from `md` up, with the theme control
+at the bottom. On a phone the theme control is on the top bar and tabs stay
+at the bottom.

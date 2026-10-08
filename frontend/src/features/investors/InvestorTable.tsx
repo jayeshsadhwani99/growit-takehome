@@ -26,7 +26,7 @@ export function InvestorTable({
   return (
     <DataTable>
       <caption className="sr-only">Investors and their share of capital raised</caption>
-      <thead className="border-b border-border bg-stone-50">
+      <thead className="border-b border-border bg-wash">
         <tr>
           <th className={head}>Name</th>
           <th className={`${head} text-right`}>Investment</th>

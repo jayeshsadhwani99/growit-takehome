@@ -17,7 +17,7 @@ export function InvestorPayoutTable({
   return (
     <DataTable>
       <caption className="sr-only">Amount paid to each investor by hurdle</caption>
-      <thead className="border-b border-border bg-stone-50">
+      <thead className="border-b border-border bg-wash">
         <tr>
           <th className={head}>Investor</th>
           {hurdles.map((hurdle, index) => (

@@ -1,3 +1,4 @@
+import { useMemo, useRef } from "react";
 import {
   DndContext,
   KeyboardSensor,
@@ -7,24 +8,24 @@ import {
   useSensors,
   type DragEndEvent,
 } from "@dnd-kit/core";
-import {
-  SortableContext,
-  sortableKeyboardCoordinates,
-  verticalListSortingStrategy,
-} from "@dnd-kit/sortable";
+import { SortableContext, verticalListSortingStrategy } from "@dnd-kit/sortable";
 import { EmptyState } from "@/components";
 import { placeHurdle } from "@/store/features/hurdles";
 import { useAppDispatch } from "@/store/hooks";
 import type { Hurdle } from "@/types";
 import { HurdleSortable } from "./HurdleSortable";
 import { OverflowArrow } from "./OverflowArrow";
+import { restrictHurdleDrag } from "./restrictHurdleDrag";
 import { UndistributedBox } from "./UndistributedBox";
+import { verticalKeyboardCoordinates } from "./verticalKeyboardCoordinates";
 
 export function HurdleList({ hurdles, locked }: { hurdles: Hurdle[]; locked: boolean }) {
   const dispatch = useAppDispatch();
+  const listRef = useRef<HTMLDivElement>(null);
+  const modifiers = useMemo(() => [restrictHurdleDrag(listRef)], []);
   const sensors = useSensors(
     useSensor(PointerSensor, { activationConstraint: { distance: 6 } }),
-    useSensor(KeyboardSensor, { coordinateGetter: sortableKeyboardCoordinates }),
+    useSensor(KeyboardSensor, { coordinateGetter: verticalKeyboardCoordinates }),
   );
 
   function onDragEnd(event: DragEndEvent): void {
@@ -47,16 +48,25 @@ export function HurdleList({ hurdles, locked }: { hurdles: Hurdle[]; locked: boo
   }
 
   return (
-    <DndContext sensors={sensors} collisionDetection={closestCenter} onDragEnd={onDragEnd}>
-      <SortableContext items={hurdles.map((item) => item.id)} strategy={verticalListSortingStrategy}>
-        {hurdles.map((hurdle, index) => (
-          <div key={hurdle.id}>
-            <HurdleSortable hurdle={hurdle} index={index} count={hurdles.length} locked={locked} />
-            {index < hurdles.length - 1 ? <OverflowArrow /> : null}
+    <div>
+      <DndContext
+        sensors={sensors}
+        modifiers={modifiers}
+        collisionDetection={closestCenter}
+        onDragEnd={onDragEnd}
+      >
+        <SortableContext items={hurdles.map((item) => item.id)} strategy={verticalListSortingStrategy}>
+          <div ref={listRef}>
+            {hurdles.map((hurdle, index) => (
+              <div key={hurdle.id}>
+                <HurdleSortable hurdle={hurdle} index={index} count={hurdles.length} locked={locked} />
+                {index < hurdles.length - 1 ? <OverflowArrow /> : null}
+              </div>
+            ))}
           </div>
-        ))}
-      </SortableContext>
+        </SortableContext>
+      </DndContext>
       <UndistributedBox />
-    </DndContext>
+    </div>
   );
 }

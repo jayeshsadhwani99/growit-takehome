@@ -1,6 +1,7 @@
 import { NavLink } from "react-router-dom";
 import { NAV_ITEMS } from "@/constants";
 import { cn } from "@/utils/cn";
+import { ThemeToggle } from "@/components/ThemeToggle";
 import { BrandMark } from "./BrandMark";
 
 /** Desktop navigation. Hidden once the layout drops below the md breakpoint. */
@@ -19,7 +20,7 @@ export function SideNav() {
               className={({ isActive }) =>
                 cn(
                   "flex h-9 items-center gap-2 rounded-md px-2.5 text-sm font-medium",
-                  isActive ? "bg-accent-soft text-accent" : "text-muted hover:bg-stone-50 hover:text-ink",
+                  isActive ? "bg-accent-soft text-accent" : "text-muted hover:bg-wash hover:text-ink",
                 )
               }
             >
@@ -29,6 +30,9 @@ export function SideNav() {
           );
         })}
       </nav>
+      <div className="border-t border-border p-2">
+        <ThemeToggle />
+      </div>
     </aside>
   );
 }

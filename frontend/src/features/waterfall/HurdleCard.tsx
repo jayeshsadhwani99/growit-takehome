@@ -7,7 +7,7 @@ import { hurdleDescription, hurdleTitle } from "@/utils";
 import { PrefRateField } from "./PrefRateField";
 
 const iconButton =
-  "inline-flex h-8 w-8 items-center justify-center rounded-md border border-border bg-surface text-ink hover:bg-canvas disabled:cursor-not-allowed disabled:opacity-40";
+  "inline-flex h-8 w-8 cursor-pointer items-center justify-center rounded-md border border-border bg-surface text-ink hover:bg-wash disabled:cursor-not-allowed disabled:opacity-40";
 
 interface HurdleCardProps {
   hurdle: Hurdle;
@@ -25,7 +25,7 @@ export function HurdleCard({ hurdle, index, count, locked, dragAttributes, dragL
     <article className="flex gap-2 rounded-lg border border-border bg-surface p-3">
       <button
         type="button"
-        className="inline-flex h-8 w-6 shrink-0 cursor-grab items-center justify-center text-muted active:cursor-grabbing disabled:cursor-not-allowed disabled:opacity-40"
+        className="inline-flex h-8 w-6 shrink-0 cursor-grab touch-none items-center justify-center text-muted active:cursor-grabbing disabled:cursor-not-allowed disabled:opacity-40"
         aria-label="Drag to reorder"
         disabled={locked}
         {...dragAttributes}
@@ -65,7 +65,7 @@ export function HurdleCard({ hurdle, index, count, locked, dragAttributes, dragL
             </button>
             <button
               type="button"
-              className={`${iconButton} text-red-700`}
+              className={`${iconButton} text-red-700 dark:text-red-300`}
               aria-label="Delete"
               disabled={locked}
               onClick={() => dispatch(removeHurdle(hurdle.id))}

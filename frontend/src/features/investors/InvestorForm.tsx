@@ -17,9 +17,7 @@ export function InvestorForm({ onClose }: { onClose: () => void }) {
     setErrors(next);
     if (Object.keys(next).length > 0) return;
     dispatch(investorAdded({ id: createId(), name: name.trim(), amount: Number(amount), date }));
-    setName("");
-    setAmount("");
-    setErrors({});
+    onClose();
   }
 
   return (
@@ -62,7 +60,6 @@ export function InvestorForm({ onClose }: { onClose: () => void }) {
           }}
           invalid={Boolean(errors.date)}
             describedBy={errors.date ? "investor-date-error" : undefined}
-            inline
           />
       </FormField>
       <div className="flex justify-end gap-1.5">

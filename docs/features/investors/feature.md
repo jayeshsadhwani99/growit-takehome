@@ -19,6 +19,5 @@ dollars they put in, and the day those dollars start counting.
 - The add form lives in a dialog. An empty table shows "No investors" and the
   button that opens it. Once someone is on the table, that button moves to the
   page header.
-- The dialog stays open after a successful add. The date field is kept so
-  several people who invested the same day are faster to enter. Name and amount
-  clear. Close dismisses the dialog.
+- A successful add closes the dialog. Validation errors leave it open. Close
+  dismisses it without adding anyone.

@@ -21,8 +21,8 @@ export function RunHistory({ runs, selectedId }: { runs: Run[]; selectedId: stri
                 type="button"
                 onClick={() => dispatch(runSelected(run.id))}
                 className={cn(
-                  "flex h-9 w-full items-center justify-between gap-2 rounded-md px-2 text-left text-sm",
-                  run.id === selectedId ? "bg-accent-soft text-accent" : "hover:bg-stone-50",
+                  "flex h-9 w-full cursor-pointer items-center justify-between gap-2 rounded-md px-2 text-left text-sm",
+                  run.id === selectedId ? "bg-accent-soft text-accent" : "hover:bg-wash",
                 )}
               >
                 <span>{formatDate(run.date)}</span>

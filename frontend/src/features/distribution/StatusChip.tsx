@@ -3,8 +3,8 @@ import { cn, hurdleStatusLabel } from "@/utils";
 
 const tone: Record<HurdleStatus, string> = {
   filled: "bg-accent-soft text-accent",
-  partial: "bg-amber-100 text-amber-950",
-  "not-reached": "bg-stone-100 text-stone-600",
+  partial: "bg-amber-100 text-amber-950 dark:bg-amber-950 dark:text-amber-200",
+  "not-reached": "bg-wash text-muted",
 };
 
 export function StatusChip({ status }: { status: HurdleStatus }) {

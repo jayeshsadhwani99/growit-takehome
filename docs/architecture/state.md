@@ -6,6 +6,7 @@ One Redux store, persisted to `localStorage` under `persist:growit`.
 investors: Investor[]
 hurdles: Hurdle[]
 runs: { items: Run[]; selectedId: string | null }
+theme: "system" | "light" | "dark"
 ```
 
 Types live in `frontend/src/types/`. A run is `{ id, date, amount, payouts, leftover }`.
@@ -20,7 +21,7 @@ A payout is `{ investorId, hurdleId, amount }`.
 - Runs are appended. A new run's date must be on or after the last run's date,
   so array order is chronological order.
 - redux-persist writes the whole deal through `browserStorage`. A reload
-  keeps the cap table, the waterfall, and history.
+  keeps the cap table, the waterfall, history, and the theme.
 
 ## Edit locks
 

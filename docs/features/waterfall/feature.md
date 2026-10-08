@@ -11,8 +11,10 @@ There is one waterfall, shared by every investor.
 - **Return of capital.** Pay back each investor's original contribution.
 - The same type can appear more than once. A second preferred return is a
   separate hurdle with its own rate.
-- Order is the card order. Drag a card by the handle on the left, or use the
-  up and down icons. The first card cannot move up, and the last cannot move down.
+- Order is the card order. Drag a card by the handle on the left, straight up
+  or down, and only within the hurdle list. The undistributed box is not a
+  drop target. Up and down icons move one place. The first card cannot move
+  up, and the last cannot move down.
 - Between cards, a short arrow says overflow goes to the next hurdle.
 - The list always ends in a dashed "Undistributed cash" box. Money still left
   after the last hurdle is not forced into a split.

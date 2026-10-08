@@ -14,13 +14,13 @@ export function FormField({ id, label, error, children }: FormFieldProps) {
     <div>
       <label
         htmlFor={id}
-        className={cn("mb-1 block text-xs font-medium", error ? "text-red-700" : "text-muted")}
+        className={cn("mb-1 block text-xs font-medium", error ? "text-red-700 dark:text-red-300" : "text-muted")}
       >
         {label}
       </label>
       {children}
       {error ? (
-        <p id={`${id}-error`} role="alert" className="mt-1 text-xs font-medium text-red-700">
+        <p id={`${id}-error`} role="alert" className="mt-1 text-xs font-medium text-red-700 dark:text-red-300">
           {error}
         </p>
       ) : null}

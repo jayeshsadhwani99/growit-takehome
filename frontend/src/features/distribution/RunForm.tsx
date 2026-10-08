@@ -49,7 +49,6 @@ export function RunForm({ onClose }: { onClose: () => void }) {
           }}
           invalid={Boolean(dateError)}
           describedBy={dateError ? "run-date-error" : undefined}
-          inline
         />
       </FormField>
       <FormField id="run-amount" label="Amount (USD)">
@@ -64,7 +63,7 @@ export function RunForm({ onClose }: { onClose: () => void }) {
         />
       </FormField>
       {engineError ? (
-        <p id="run-engine-error" role="alert" className="text-xs font-medium text-red-700">
+        <p id="run-engine-error" role="alert" className="text-xs font-medium text-red-700 dark:text-red-300">
           {engineError}
         </p>
       ) : null}
