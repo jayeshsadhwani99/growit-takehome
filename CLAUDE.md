@@ -1,8 +1,8 @@
 # CLAUDE.md — AI agent entry point
 
 You are working on a GrowIt take-home: a small app for distributing cash to
-investors through a waterfall. The UI is the product right now. The distribution
-engine is a stub.
+investors through a waterfall. The screens and the distribution engine are
+both in place.
 
 **Read this file first. Then read `docs/explorer.md`.**
 

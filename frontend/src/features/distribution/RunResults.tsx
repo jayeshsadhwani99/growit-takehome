@@ -21,9 +21,9 @@ export function RunResults({
 
   return (
     <div className="flex flex-col gap-2">
-      <div className="flex flex-wrap items-baseline justify-between gap-2">
+      <div className="flex w-full min-w-0 flex-wrap items-baseline justify-between gap-x-2 gap-y-0.5">
         <h2 className="text-sm font-medium">{formatDate(run.date)}</h2>
-        <p className="text-xs text-muted">
+        <p className="min-w-0 text-xs text-wrap text-muted">
           Distributed <Money value={run.amount} />
         </p>
       </div>
