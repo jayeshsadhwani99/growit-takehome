@@ -27,6 +27,8 @@ pnpm typecheck
 - Money is stored as integer cents. Interest is rounded half-up once per owed amount.
 - Preferred return is simple interest on each investor's unreturned capital,
   actual days / 365, starting on that investor's own investment date.
+- Day count is actual days / 365. A leap day counts as a real extra day, so a
+  full leap year earns 8.02% instead of 8% (e.g. $8,021.92 on $100,000).
 - Cash walks the hurdles in order. Whatever is left after the last hurdle is
   shown as undistributed.
 - Runs must be dated on or after the latest run (same day is fine). Runs are
