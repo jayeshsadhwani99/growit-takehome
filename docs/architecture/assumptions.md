@@ -12,7 +12,8 @@ leftover pennies to the largest fractional shares so the payouts add up.
 
 `YYYY-MM-DD` everywhere. `yearFraction` parses them as UTC midnight so a
 browser in another timezone cannot move the day. The day count is actual/365.
-The `365` denominator in `yearFraction.ts` is the only place to change that.
+`DAYS_IN_YEAR` in `daysInYear.ts` is the only place to change that.
+`yearFraction` and `accruedPref` both import it.
 
 ## Preferred return rate is a percent
 

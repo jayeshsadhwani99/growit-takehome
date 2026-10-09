@@ -4,6 +4,7 @@
 frontend/src/engine/index.ts                         public barrel
 frontend/src/engine/parseIsoDate.ts
 frontend/src/engine/daysBetween.ts
+frontend/src/engine/daysInYear.ts
 frontend/src/engine/roundDiv.ts
 frontend/src/engine/yearFraction.ts
 frontend/src/engine/runDistribution/index.ts         the walk
@@ -22,9 +23,10 @@ capital, $6,000 on 2026-01-01.
 
 `rate` on a preferred hurdle is the percent the user typed (`8`, not `0.08`).
 Day count is actual/365. `daysBetween` is the calendar count, including a
-leap day when the span contains one. `yearFraction` divides that count by
-365. The engine multiplies cents by that day count and divides by 365 in
-integer arithmetic, then rounds half-up to the cent.
+leap day when the span contains one. `DAYS_IN_YEAR` is the shared
+denominator. `yearFraction` divides by it. `accruedPref` multiplies cents by
+the day count and divides by `BigInt(DAYS_IN_YEAR)`, then rounds half-up to
+the cent.
 
 The function should assign the run id (the form does not). It should not read
 the store. Previous runs are an argument so the same inputs always produce

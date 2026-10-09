@@ -1,4 +1,5 @@
 import { daysBetween } from "../daysBetween";
+import { DAYS_IN_YEAR } from "../daysInYear";
 import { roundDiv } from "../roundDiv";
 
 export interface CapitalReturn {
@@ -8,7 +9,6 @@ export interface CapitalReturn {
 
 const RATE_SCALE = 100n;
 const CENT_SCALE = 100n;
-const YEAR_DAYS = 365n;
 
 /**
  * Simple interest, in cents, on the capital that was actually out during each stretch.
@@ -39,5 +39,5 @@ export function accruedPref(
   if (asOf > cursor && balance > 0) {
     numerator += BigInt(balance) * rateUnits * BigInt(daysBetween(cursor, asOf));
   }
-  return roundDiv(numerator, RATE_SCALE * CENT_SCALE * YEAR_DAYS);
+  return roundDiv(numerator, RATE_SCALE * CENT_SCALE * BigInt(DAYS_IN_YEAR));
 }
