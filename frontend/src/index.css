@@ -49,6 +49,12 @@ progress.hurdle-progress::-moz-progress-bar {
   background: var(--color-accent);
 }
 
+/* A zero value still paints the accent in WebKit. Keep that bar the gray track. */
+progress.hurdle-progress.is-empty::-webkit-progress-value,
+progress.hurdle-progress.is-empty::-moz-progress-bar {
+  background: var(--color-border);
+}
+
 /* Spinners make number fields a different width than text fields. */
 input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button {
