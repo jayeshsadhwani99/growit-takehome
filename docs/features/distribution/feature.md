@@ -23,8 +23,9 @@ and never recomputed.
 
 - History lists runs, newest first. Click one to view it. The date stays on one line. A very long amount ellipsizes.
 - Each hurdle is an accordion, closed until opened. The header shows paid versus owed, a progress
-  bar, and a chip: Filled, Partly filled, or Not reached. A bar at 0% stays the gray track.
+  bar, and a chip: Filled, Partly filled, or Not reached. A bar at 0%, including $0 of $0 owed, stays the gray track.
   Opening it lists each investor on that hurdle, with their own paid-versus-owed bar.
+  An investor owed nothing is shown in the muted text, same as the empty bar.
 - Owed is the share saved on the run. Runs saved before that replay the same
   inputs so the bars still have a denominator. See
   `docs/architecture/assumptions.md`.

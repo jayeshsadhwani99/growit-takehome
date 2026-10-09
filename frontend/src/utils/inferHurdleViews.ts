@@ -9,7 +9,9 @@ export function inferHurdleViews(run: Run, hurdles: Hurdle[]): HurdleView[] {
   return hurdles.map((hurdle, index) => {
     const amount = paid[index] ?? 0;
     const cleared = run.leftover > 0 || (lastPaid >= 0 && index < lastPaid);
-    if (cleared) return { hurdleId: hurdle.id, paid: amount, owed: amount, status: "filled", progress: 100, shares: [] };
+    if (cleared) {
+      return { hurdleId: hurdle.id, paid: amount, owed: amount, status: "filled", progress: amount > 0 ? 100 : 0, shares: [] };
+    }
     if (index === lastPaid) {
       return { hurdleId: hurdle.id, paid: amount, owed: null, status: "partial", progress: null, shares: [] };
     }

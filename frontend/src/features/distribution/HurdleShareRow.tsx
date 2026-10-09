@@ -1,5 +1,5 @@
 import { Money } from "@/components";
-import { hurdleFill } from "@/utils";
+import { cn, hurdleFill } from "@/utils";
 import { HurdleProgress } from "./HurdleProgress";
 
 export function HurdleShareRow({ name, owed, paid }: { name: string; owed: number; paid: number }) {
@@ -8,7 +8,7 @@ export function HurdleShareRow({ name, owed, paid }: { name: string; owed: numbe
   return (
     <li>
       <div className="flex items-baseline justify-between gap-2">
-        <span className="text-sm font-medium">{name}</span>
+        <span className={cn("text-sm", fill.progress <= 0 ? "text-muted" : "font-medium")}>{name}</span>
         <p className="text-xs text-muted">
           <Money value={paid} /> of <Money value={owed} />
         </p>
